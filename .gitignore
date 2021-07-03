@@ -1,0 +1,16 @@
+# Ignore everything,
+/*
+
+# except the thing that tells what to ignore,
+!.gitignore
+
+# and of course our configurations.
+!.config
+!.xinitrc
+!.xmobarrc
+!.xmonad/xmonad.hs
+
+
+# Let's keep documentation intact as well.
+README.md
+

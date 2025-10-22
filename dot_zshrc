@@ -1,0 +1,2 @@
+# load from tracked config
+source ~/.config/.zshrc

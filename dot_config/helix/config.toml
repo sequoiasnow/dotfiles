@@ -1,0 +1,4 @@
+theme = "fleet_dark"
+
+[keys.normal."space"]
+"F" = "file_picker_in_current_buffer_directory"

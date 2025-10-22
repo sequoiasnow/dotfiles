@@ -1,0 +1,20 @@
+export PS1='%F{magenta}%~ %(?.%F{green}.%F{red})λ%f '
+
+# Add Emacs
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# Add doom to the path
+export PATH="$HOME/.config/emacs/bin:$PATH"
+
+# Add ghcup to path
+export PATH="$HOME/.ghcup/bin:$PATH"
+
+# Let's do some magic with gcc
+# if command -v gcc-13; then
+#     ln -sf $(readlink -f $(which gcc-13)) $(which gcc-13 | cut -d - -f 1)
+# fi
+
+# Some common emacs aliases
+alias ec="emacsclient"
+alias e="emacs"
+

@@ -1,0 +1,11 @@
+brew "bash"
+brew "chezmoi"
+brew "helix"
+brew "zsh"
+brew "tmux"
+brew "git"
+brew "starship"
+brew "neofetch"
+
+cask "font-monaspice-nerd-font"
+cask "wezterm"

@@ -18,3 +18,5 @@ export PATH="$HOME/.ghcup/bin:$PATH"
 alias ec="emacsclient"
 alias e="emacs"
 
+# Use the starship prompt
+eval "$(starship init zsh)"

@@ -1,5 +1,11 @@
 [".tmux/plugins/tpm"]
 type = "git-repo"
 url = "https://github.com/tmux-plugins/tpm"
-refreshPeriod = "1h"
+refreshPeriod = "128h"
+
+["wallpaper/aesthetic-wallpaper"]
+type = "git-repo"
+url = "https://github.com/D3Ext/aesthetic-wallpapers.git"
+refreshPeriod = "256h"
+
 

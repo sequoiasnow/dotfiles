@@ -11,9 +11,14 @@ config.config = "~/code/typos-lsp/crates/typos-lsp/tests/typos.toml"
 # Defaults to Warning.
 # config.diagnosticSeverity = "Warning"
 
+ 
+[language-server.harper-ls]
+command = "harper-ls"
+args = ["--stdio"]
+
 [[language]]
 name = "markdown"
 soft-wrap.enable = true
 text-width = 80
 soft-wrap.wrap-at-text-width = true
-language-servers = ["typos", "marksman", "markdown-oxide"]
+language-servers = ["marksman", "harper-ls"]

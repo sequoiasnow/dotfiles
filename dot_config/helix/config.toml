@@ -2,3 +2,10 @@ theme = "fleet_dark"
 
 [keys.normal."space"]
 "F" = "file_picker_in_current_buffer_directory"
+
+[keys.normal.space.t]
+z = ":toggle gutters.line-numbers.min-width 51 3"
+
+[editor.soft-wrap]
+wrap-indicator = ""
+

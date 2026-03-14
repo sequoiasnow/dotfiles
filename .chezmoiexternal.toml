@@ -9,3 +9,7 @@ url = "https://github.com/D3Ext/aesthetic-wallpapers.git"
 refreshPeriod = "256h"
 
 
+["wallpaper/walls"]
+type = "git-repo"
+url = "https://github.com/Gwynsav/walls.git"
+refreshPeriod = "256h"

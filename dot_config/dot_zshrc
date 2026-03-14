@@ -14,6 +14,17 @@ export PATH="$HOME/.ghcup/bin:$PATH"
 #     ln -sf $(readlink -f $(which gcc-13)) $(which gcc-13 | cut -d - -f 1)
 # fi
 
+# If we have fortune installed, use it
+if command -v fortune &>/dev/null; then
+  fortune
+else
+  echo "fortune not installed! That's so unfortunate!"
+  echo
+  echo "> Maybe try 'brew install fortune' :)"
+  echo "  -- Sincerely, your past self"
+fi
+
+
 # Set the editor to helix
 export EDITOR=hx
 

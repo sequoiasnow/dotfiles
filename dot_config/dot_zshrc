@@ -1,6 +1,23 @@
-export PS1='%F{magenta}%~ %(?.%F{green}.%F{red})λ%f '
+# Save install cmd
+function is_installed() {
+  if command -v $1 &>/dev/null; then
+    true
+  else
+    echo "$1 not installed! Truly, a tradgedy"
+    echo
+    echo "  Try running:"
+    echo "  >" ${2:-"brew install $1"}
+    echo 
+    echo " -- Sincerely, your past self (that bitch!)"
+    echo
+    false
+  fi 
+}
 
-# Add Emacs
+# Add xcode deps (things like lldb-dap, and other conveniances)
+export PATH="/Library/Developer/CommandLineTools/usr/bin/:$PATH"
+
+# Add brew
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Add doom to the path
@@ -9,24 +26,30 @@ export PATH="$HOME/.config/emacs/bin:$PATH"
 # Add ghcup to path
 export PATH="$HOME/.ghcup/bin:$PATH"
 
+# Ensure custom scripts are present
+export PATH="$HOME/.config/scripts:$PATH"
+
+# Add any locally installed binaries
+export PATH="$HOME/.local/bin:$PATH"
+
 # Let's do some magic with gcc
 # if command -v gcc-13; then
 #     ln -sf $(readlink -f $(which gcc-13)) $(which gcc-13 | cut -d - -f 1)
 # fi
 
-# If we have fortune installed, use it
-if command -v fortune &>/dev/null; then
+# Print a fortune
+if ! is_installed fortune; then
   fortune
-else
-  echo "fortune not installed! That's so unfortunate!"
-  echo
-  echo "> Maybe try 'brew install fortune' :)"
-  echo "  -- Sincerely, your past self"
 fi
 
-
-# Set the editor to helix
-export EDITOR=hx
+# Set the editor to helix (vim can bite me)
+if is_installed hx 'brew install helix'; then
+  export EDITOR=hx
+elif is_installed emacs; then
+  export EDITOR=emacs
+elif is_installed vim; then
+  export EDITOR=vim
+fi
 
 # Some common emacs aliases
 alias ec="emacsclient"
@@ -34,3 +57,4 @@ alias e="emacs"
 
 # Use the starship prompt
 eval "$(starship init zsh)"
+

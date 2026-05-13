@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+set -e
+
+image="$1"
+threshold="$2"
+
+if [[ $# -ne 2 ]]; then
+  echo "Usage: $0 [IMAGE] [THRESHOLD]"
+  echo
+  echo "Converts an image to a zine printable version by using a black point"
+  echo "threshold of [THRESHOLD]"
+  echo
+  echo "Arguments:"
+  echo "  [IMAGE]        The path to the image to alter"
+  echo "  [THRESHOLD]    The black point threshold, format: [0-100]%"
+  echo 
+  echo "Example:"
+  echo "  > $0 example.jpeg 55%"
+  exit 0
+fi
+
+name=$(printf "$image" | cut -d. -f 1)
+final="$name-zine.png"
+
+echo "Converting $image to $final with threshold $threshold..."
+
+magick $image -alpha off -threshold $threshold $final
+
+open $final

@@ -3,13 +3,7 @@ type = "git-repo"
 url = "https://github.com/tmux-plugins/tpm"
 refreshPeriod = "128h"
 
-["wallpaper/aesthetic-wallpaper"]
+[".config/wallpaper"]
 type = "git-repo"
-url = "https://github.com/D3Ext/aesthetic-wallpapers.git"
-refreshPeriod = "256h"
-
-
-["wallpaper/walls"]
-type = "git-repo"
-url = "https://github.com/Gwynsav/walls.git"
+url = "https://github.com/sequoiasnow/wallpaper.git"
 refreshPeriod = "256h"

@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+s='Change Wallpaper'
+
+if ! shortcuts list | grep "$s" >/dev/null; then
+  echo "$s not installed, adding from config"
+  open "~/.config/shortcuts/$s.shortcut"
+fi
+
+shortcuts run "$s"

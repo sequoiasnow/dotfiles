@@ -1,0 +1,28 @@
+#!/usr/bin/env sh
+
+set -e
+
+# Simple wrapper around gum, that will not fail if gum is not present
+if [ -x "$(which gum)" ]; then
+  gum $@
+  # use else to allow gum to set exit code
+else
+  # otherwise mimik some gum functionality
+  case "$1" in
+    'log')
+      if [[ "$2" == '-'* ]]; then
+        # don't print the flags
+        echo ${@:3}
+      else
+        # but print the rest
+        echo ${@:2} 
+      fi
+      ;;
+    *)
+      echo "Error $1 argument requires 'gum'"
+      echo
+      echo "please run 'brew install gum' to continue"
+      exit 1
+  esac
+fi
+

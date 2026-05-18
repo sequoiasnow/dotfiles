@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-set -e
+set -ex
 
 image="$1"
 threshold="$2"
 
-if [[ $# -ne 2 ]]; then
+if [[ $# -lt 2 ]]; then
   echo "Usage: $0 [IMAGE] [THRESHOLD]"
   echo
   echo "Converts an image to a zine printable version by using a black point"
@@ -25,6 +25,6 @@ final="$name-zine.png"
 
 echo "Converting $image to $final with threshold $threshold..."
 
-magick $image -alpha off -threshold $threshold $final
+magick $image -alpha off -threshold $threshold ${@:3} $final 
 
 open $final

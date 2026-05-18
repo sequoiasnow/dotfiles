@@ -1,0 +1,94 @@
+#!/usr/bin/env osascript -l JavaScript
+
+const helpText =
+`SYNOPSIS mac-notify [MESSAGE]
+
+ DESCRIPTION
+    Sends a message to notification center on mac using the arguments
+    provided. Currently the icon can be set through notification preferences
+    but not via script.
+
+    Message format:
+
+    |------------------------|
+    | [TITLE]                |
+    |------------------------|
+    | [SUBTITLE]             |
+    |------------------------|
+    |                        |
+    |                        |
+    |        [MESSAGE]       |
+    |                        |
+    |                        |
+    |------------------------|
+
+
+    Note that this relies on apple script on more recent versions of MacOS
+    which support scripting with JavaScript.
+
+OPTIONS
+    -h
+    --help
+        Display this message and exit.
+
+    [MESSAGE]
+    -m
+    --msg
+        Set [MESSAGE], by default unflagged arguments are taken as the
+        [MESSAGE]. This is the primary content of the mac notification.
+
+    -t [NOTIFICATION]
+    --title [NOTIFICATION]
+        Set the title of the notificaiton
+
+    -s [SUBTITLE]
+    --subtitle [SUBTITLE]
+        Set the subtitle of the message.
+
+ Options`
+
+const app = Application.currentApplication()
+app.includeStandardAdditions = true
+
+const optionre = /^\-\-?([a-z])[a-z]*/
+const flags    = [ '-t'
+                 , '--title'
+                 , '-s'
+                 , '--subtitle'
+                 , '-m'
+                 , '--msg'
+                 , '--message' ]
+
+function run(argv) {
+  let notification = {
+    't': [],
+    's': [],
+    'm': []
+  }
+
+  let active = 'm' // by default arguments are being passd to the message
+  for (a of argv) {
+    const flag = a.match(optionre)
+    if (flag) {
+      // this is a flag, change what we are setting to that (first letter of
+      // flag indicates field, allows easy -- vs - comparison). We use the
+      // capture group to indicate s|t|m
+      if (!Object.keys(notification).includes(flag[1])) {
+        if (!['-h', '--help'].includes(a))
+          console.log(`Flag ${a} is not one of ${flags}`)
+        console.log(helpText)
+        return
+      }
+      
+      active = flag[1] // regex cg, first non '-' charcter
+      continue
+    }
+
+    notification[active].push(a)
+  }
+
+  app.displayNotification( notification['m'].join(' ')
+                         , { withTitle: notification['t'].join(' ')
+                           , subtitle:  notification['s'].join(' ') } )
+
+}

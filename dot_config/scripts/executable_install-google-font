@@ -1,0 +1,56 @@
+#!/usr/bin/env sh
+
+set -e
+
+if [ ! -x "$(which brew)" ]; then
+  echo "Brew not installed, please install homebrew before continuing"
+  exit 1
+fi
+
+
+if [ $# -eq 1 ]; then
+  font=$(echo "$1" | tr -d '.\/' | tr -s '_\+ %' '-' | tr '[:upper:]' '[:lower:]')
+  echo "Installing font $font..."
+
+  pretty_font=$(echo "$1" | tr -d '.\/' | tr -s '\-\+ %' ' ')
+
+  if brew ls --versions --cask font-$font > /dev/null; then
+    mac-notify Skipping installing font-$font, since it\'s already installed \
+      -t Skipping $pretty_font
+    exit 0
+  fi
+
+  brew install --cask font-$font
+
+  mac-notify Successfully installed homebrew cask font-$font \
+    -t Installed $pretty_font!
+  exit 0
+fi
+
+# If many fonts are passed, install them all
+if [ $# -gt 1 ]; then
+  for var in "$@"; do
+    $0 "$var"
+  done
+fi
+
+
+echo "No argument provided, defaulting to installing fonts in local directory."
+echo "This is useful for installing a zip download from google fonts, for"
+echo "instance"
+
+invalid=$(find -E * -maxdepth 0  -not -regex '^[A-Za-z\+\-\_0-9]+$')
+
+if [ "$invalid" ]; then
+  pretty log -l error "some files do not look like font directories in the"
+  pretty log -l error "format expected from a google font download"
+
+  echo "$invalid" | pretty table --separator='|' -p
+  exit 1
+fi
+
+echo "Preparing to install fonts:"
+ls -1 | pretty table -p
+
+# The best part about recursion is the best part about recursion...
+find . -mindepth 1 -maxdepth 1 -exec $0 {} \;

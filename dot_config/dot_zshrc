@@ -20,8 +20,18 @@ export PATH="/Library/Developer/CommandLineTools/usr/bin/:$PATH"
 # Add brew
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# Add doom to the path
-export PATH="$HOME/.config/emacs/bin:$PATH"
+# Add docker
+export PATH="$HOME/.docker/bin:$PATH"
+
+# Add gcloud CLI to path
+if [ -f /opt/homebrew/share/zsh/site-functions/_google_cloud_sdk ]; then
+  source /opt/homebrew/share/zsh/site-functions/_google_cloud_sdk
+fi
+
+# Optionally, add gcloud binaries to path
+if [ -f /opt/homebrew/share/google-cloud-sdk/path.zsh.inc ]; then
+  source /opt/homebrew/share/google-cloud-sdk/path.zsh.inc
+fi 
 
 # Add ghcup to path
 export PATH="$HOME/.ghcup/bin:$PATH"
@@ -37,9 +47,22 @@ export PATH="$HOME/.local/bin:$PATH"
 #     ln -sf $(readlink -f $(which gcc-13)) $(which gcc-13 | cut -d - -f 1)
 # fi
 
+export DRADIS_SCRIPTS_DIR="$HOME/dev/dradis-infra"
+if [ -d $DRADIS_SCRIPTS_DIR ]; then
+  export PATH="$PATH:$DRADIS_SCRIPTS_DIR"
+fi
+
+export ULTRA_IMAGES="us-central1-docker.pkg.dev/dradis-75/dradis-images"
+
+
 # Print a fortune
-if ! is_installed fortune; then
+if is_installed fortune; then
   fortune
+fi
+
+# Setup thefuck
+if is_installed thefuck; then
+  eval $(thefuck --alias)
 fi
 
 # Set the editor to helix (vim can bite me)

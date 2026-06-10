@@ -16,9 +16,23 @@ config.config = "~/code/typos-lsp/crates/typos-lsp/tests/typos.toml"
 command = "harper-ls"
 args = ["--stdio"]
 
+[language-server.harper-ls.config.harper-ls.linters]
+SentenceCapitalization = false
+ToDoHyphen = false
+
 [[language]]
 name = "markdown"
 soft-wrap.enable = true
 text-width = 80
 soft-wrap.wrap-at-text-width = true
 language-servers = ["marksman", "harper-ls"]
+
+[[language]]
+name = "haskell"
+text-width = 80
+language-servers = ["haskell-language-server", "harper-ls"]
+
+[[language]]
+name = "git-commit"
+text-width = 80
+language-servers = ["harper-ls"]

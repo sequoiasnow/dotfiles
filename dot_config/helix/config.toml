@@ -1,4 +1,4 @@
-theme = "fleet_dark"
+theme = "base16_default"
 
 
 
@@ -16,3 +16,6 @@ end-of-line-diagnostics = "hint"
 
 [editor.inline-diagnostics]
 cursor-line = "warning" # show warnings and errors on the cursorline inline
+
+[editor.file-picker]
+hidden = false      # Show hidden files

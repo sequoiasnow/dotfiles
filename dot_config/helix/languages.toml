@@ -17,14 +17,20 @@ command = "harper-ls"
 args = ["--stdio"]
 
 [language-server.harper-ls.config.harper-ls.linters]
+spell_check = false
+sentence_capitalization = false
+spaces = false
+unlocalized_numbers = false
+todo_hypen = false
 SentenceCapitalization = false
 ToDoHyphen = false
+SpellCheck = false
 
 [[language]]
 name = "markdown"
 soft-wrap.enable = true
 text-width = 80
-soft-wrap.wrap-at-text-width = true
+rulers = [80]
 language-servers = ["marksman", "harper-ls"]
 
 [[language]]

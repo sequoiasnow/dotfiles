@@ -1,4 +1,6 @@
-theme = "fleet_dark"
+theme = "base16_default"
+
+
 
 [keys.normal."space"]
 "F" = "file_picker_in_current_buffer_directory"
@@ -9,3 +11,11 @@ z = ":toggle gutters.line-numbers.min-width 51 3"
 [editor.soft-wrap]
 wrap-indicator = ""
 
+[editor]
+end-of-line-diagnostics = "hint"
+
+[editor.inline-diagnostics]
+cursor-line = "warning" # show warnings and errors on the cursorline inline
+
+[editor.file-picker]
+hidden = false      # Show hidden files

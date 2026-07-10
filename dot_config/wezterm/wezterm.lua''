@@ -14,7 +14,7 @@ config.initial_rows = 28
 -- or, changing the font size and color scheme.
 config.font_size = 10
 config.line_height = 1.1
-config.color_scheme = "Duotone Dark"
+config.color_scheme = "Tokyo Night Moon"
 config.enable_tab_bar = false
 
 config.font = wezterm.font('MonaspiceKr NFM Medium') 
@@ -39,7 +39,7 @@ config.text_background_opacity = 0.7
 -- Add config to have a custom keybinding to pull up the theme picker
 config.keys = {
   {
-	  key    = "k",
+	  key    = "t",
 	  mods   = "CMD|SHIFT",
 	  action = wezterm.action_callback(function(window, pane)
 		  features.theme_switcher(window, pane)

@@ -1,17 +1,17 @@
 # Tool for generating GNU Standards-compliant Makefiles
-brew "automake"
+# brew "automake"
 # Text-based UI library
-brew "ncurses"
+# brew "ncurses"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # Console Bonsai is a bonsai tree generator, written in C using ncurses
-brew "cbonsai"
+# brew "cbonsai"
 # Manage your dotfiles across multiple diverse machines, securely
 brew "chezmoi"
 # Console Matrix
-brew "cmatrix"
+# brew "cmatrix"
 # Apjanke's fork of the classic cowsay project
-brew "cowsay"
+# brew "cowsay"
 # Infamous electronic fortune-cookie generator
 brew "fortune"
 # GNU compiler collection
@@ -37,7 +37,7 @@ brew "inetutils"
 # Library to render SVG files using Cairo
 brew "librsvg"
 # Interpreted, interactive, object-oriented programming language
-brew "python@3.14"
+brew "python"
 # Next-gen compiler infrastructure
 brew "llvm"
 # LLVM Project Linker
@@ -45,7 +45,7 @@ brew "lld"
 # Language Server Protocol for Markdown
 brew "marksman"
 # Fast, highly customisable system info script
-brew "neofetch"
+# brew "neofetch"
 # Swiss-army knife of markup format conversion
 brew "pandoc"
 # Shell command parallelization utility
@@ -55,19 +55,19 @@ brew "pipes-sh"
 # Object-relational database system
 brew "postgresql@18", link: true
 # Command driven spotify player
-brew "spotify_player"
+# brew "spotify_player"
 # Cross-shell prompt for astronauts
 brew "starship"
 # Implementation of the Language Server Protocol for LaTeX
-brew "texlab"
+# brew "texlab"
 # Terminal multiplexer
 brew "tmux"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
 # Terminal-based Tetris clone
-brew "vitetris"
+# brew "vitetris"
 # Unicode-aware word processor that runs in a terminal
-brew "wordgrinder"
+# brew "wordgrinder"
 # UNIX shell (command interpreter)
 brew "zsh"
 # Compact TeX distribution as alternative to the full TeX Live / MacTeX
@@ -229,13 +229,13 @@ cask "font-monaspice-nerd-font"
 # cask "font-zen-old-mincho"
 # cask "font-zen-tokyo-zoo"
 # Web browser
-cask "google-chrome"
+# cask "google-chrome"
 # Instant messaging application focusing on security
 # cask "signal"
 # App for making risograph prints
 # cask "spectrolite"
 # Music streaming service
-cask "spotify"
+# cask "spotify"
 # Configurable document editor that supports Markdown
 # cask "typora"
 # GPU-accelerated cross-platform terminal emulator and multiplexer

@@ -14,7 +14,8 @@ config.initial_rows = 28
 -- or, changing the font size and color scheme.
 config.font_size = 10
 config.line_height = 1.1
-config.color_scheme = "Black Metal (Dark Funeral) (base16)"
+config.color_scheme = "Aardvark Blue"
+
 config.enable_tab_bar = false
 
 config.font = wezterm.font('MonaspiceKr NFM Medium') 
@@ -33,13 +34,20 @@ config.window_padding = {
 config.window_decorations = 'RESIZE'
 
 -- I have way too much love of a transparent window
-config.window_background_opacity = 0.7
-config.text_background_opacity = 0.7
+config.window_background_opacity = 0.8
+config.text_background_opacity = 0.2
 
 -- Add config to have a custom keybinding to pull up the theme picker
 config.keys = {
   {
-	  key    = "k",
+	  key    = "r",
+	  mods   = "CMD|SHIFT",
+	  action = wezterm.action_callback(function(window, pane)
+		  features.random_theme(window, pane)
+	  end),
+  },
+  {
+	  key    = "t",
 	  mods   = "CMD|SHIFT",
 	  action = wezterm.action_callback(function(window, pane)
 		  features.theme_switcher(window, pane)

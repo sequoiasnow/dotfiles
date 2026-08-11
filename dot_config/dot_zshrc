@@ -74,11 +74,15 @@ elif is_installed vim; then
   export EDITOR=vim
 fi
 
-
 # Some common emacs aliases
 alias ec="emacsclient"
 alias e="emacs"
 
 # Use the starship prompt
 eval "$(starship init zsh)"
+
+
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)"
 

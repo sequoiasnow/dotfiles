@@ -39,7 +39,16 @@ fi
 # Optionally, add gcloud binaries to path
 if [ -f /opt/homebrew/share/google-cloud-sdk/path.zsh.inc ]; then
   source /opt/homebrew/share/google-cloud-sdk/path.zsh.inc
-fi 
+fi
+
+if [ -d /opt/homebrew/opt/ffmpeg-full/ ]; then
+  export PATH=/opt/homebrew/opt/ffmpeg-full/bin:$PATH
+
+  # Make sure compilers can find ffmpeg if needed
+  export LDFLAGS=-L/opt/homebrew/opt/ffmpeg-full/lib
+  export CPPFLAGS=-I/opt/homebrew/opt/ffmpeg-full/include
+  export PKG_CONFIG_PATH=/opt/homebrew/opt/ffmpeg-full/lib/pkgconfig
+fi
 
 # Add ghcup to path
 export PATH="$HOME/.ghcup/bin:$PATH"
